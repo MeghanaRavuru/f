@@ -1,6 +1,4 @@
 import numpy as np
-# NLP Modules
-from textblob import TextBlob
 
 # Feature Engineering
 from sklearn.feature_extraction.text import CountVectorizer
@@ -35,18 +33,6 @@ X_train, X_test, y_train, y_test = train_test_split(X_, y, test_size=0.4, random
 model = pickle.load(open('../../Desktop/pythonProject1/model.pkl', 'rb'))
 
 y_pred = model.predict(X_test)
-
-
-def get_sentiment(sample):
-    blob = TextBlob(sample)
-    sentiment = blob.sentiment.polarity
-    if sentiment > 0:
-        result = "Positive"
-    elif sentiment < 0:
-        result = "Negative"
-    else:
-        result = "Neutral"
-    return result
 
 
 def detect_hate_speech(sample):
